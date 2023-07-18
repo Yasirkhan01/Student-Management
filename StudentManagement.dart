@@ -68,11 +68,6 @@ void main() {
   print('Goodbye!');
 }
 
-/*else if (command == 'remove') {
-      RemoveTask();
-    } else if (command == 'view') {
-      viewTask();
-    */
 
 String promptUser(String prompt) {
   stdout.write("$prompt ");
@@ -176,20 +171,3 @@ StudentLogin() {
   }
 }
 
-RemoveTask() {
-  print('Enter the index of the task to remove:');
-  int index = int.parse(stdin.readLineSync()!);
-  if (index >= 0 && index < tasks.length) {
-    tasks.removeAt(index);
-    print('Task removed!');
-  } else {
-    print('Invalid index!');
-  }
-}
-
-viewTask() {
-  print('Tasks:');
-  for (int i = 0; i < tasks.length; i++) {
-    print('$i. ${tasks[i]}');
-  }
-}
