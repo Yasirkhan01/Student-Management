@@ -68,7 +68,6 @@ void main() {
   print('Goodbye!');
 }
 
-
 String promptUser(String prompt) {
   stdout.write("$prompt ");
   return stdin.readLineSync()!;
@@ -86,6 +85,7 @@ TeacherLogin() {
       Login = true;
       print("User login successful.");
       while (true) {
+        print('============================');
         print(
             'Select an option to go at(StudentProfile,AddStudent,RemoveStudent,Return)');
         String tchoption = stdin.readLineSync()!;
@@ -99,26 +99,67 @@ TeacherLogin() {
             }
           }
         } else if (tchoption == 'AddStudent') {
+          print('Enter Student Name:');
+          var newStdname = stdin.readLineSync()!;
+          print('Enter Student Roll Number:');
+          var newStdRollno = int.parse(stdin.readLineSync()!);
+          print('Enter Student Semister:');
+          var newStdSmister = stdin.readLineSync()!;
+          print('Enter Student Faculty:');
+          var newStdFaculty = stdin.readLineSync()!;
           print('Enter Student Email Adress:');
           var newStdEmail = stdin.readLineSync()!;
+          print('Enter Student Contact No.:');
+          var newStdContactno = stdin.readLineSync()!;
+          print('Enter Student Adress:');
+          var newStdAddress = stdin.readLineSync()!;
+          print('Enter Student Result:');
+          var newStdResult = stdin.readLineSync()!;
+          print('Enter Student Assignements completed:');
+          var newStdAssignement = stdin.readLineSync()!;
           print('Enter Student Passwor:');
           var newStdPass = stdin.readLineSync()!;
           Map<String, String> newusercredentials = {
-            'email': newStdEmail,
-            'password': newStdPass,
+            "email": newStdEmail,
+            "password": newStdPass,
+          };
+          Map<String, dynamic> newustudentprofile = {
+            'Student Name': newStdname,
+            'Student Roll#': newStdRollno,
+            'Semester': newStdSmister,
+            'Feculty': newStdFaculty,
+            'Student Email': newStdEmail,
+            'Student Contect': newStdContactno,
+            'Student Adress': newStdAddress,
+            'Student Result': newStdResult,
+            'Student Assignemnt': newStdAssignement,
           };
           userCredentials.add(newusercredentials);
-          print(userCredentials);
+          studentprofile.add(newustudentprofile);
+          print(userCredentials[userCredentials.length - 1]);
           print('New Student Credential has been added');
+          print('============================');
+          print(studentprofile[studentprofile.length - 1]);
+          print('New Student Profile has been added');
+          print('============================');
         } else if (tchoption == 'RemoveStudent') {
           print('Enter Student Email Adress');
           var removeStdEmail = stdin.readLineSync()!;
           for (var i = 0; i < userCredentials.length; i++) {
             if (removeStdEmail == userCredentials[i]["email"]) {
               userCredentials.removeAt(i);
+              print('============================');
+              print(userCredentials);
+              print('============================');
+              print('User Credentials has been Deleted');
+              print('============================');
+              studentprofile.removeAt(i);
+              print(studentprofile);
+              print('============================');
+              print('Student Profile has been Deleted');
+              print('============================');
             }
           }
-          print(userCredentials);
         } else if (tchoption == 'Return') {
           break;
         }
@@ -138,26 +179,32 @@ StudentLogin() {
         credentials["email"] == enteredEmail &&
         credentials["password"] == enteredPassword)) {
       Login = true;
+      print('============================');
       print("User login successful.");
+      print('============================');
       while (true) {
+        print('============================');
         print(
             'Select an option to go at(StudentProfile,Result,Assignemnt,Return)');
         String stdoption = stdin.readLineSync()!;
         if (stdoption == 'StudentProfile') {
           for (var i = 0; i < studentprofile.length; i++) {
             if (studentprofile[i]['Student Email'] == enteredEmail) {
+              print('============================');
               print(studentprofile[i]);
             }
           }
         } else if (stdoption == 'Assignemnt') {
           for (var i = 0; i < studentprofile.length; i++) {
             if (studentprofile[i]['Student Email'] == enteredEmail) {
+              print('============================');
               print(studentprofile[i]['Student Assignemnt']);
             }
           }
         } else if (stdoption == 'Result') {
           for (var i = 0; i < studentprofile.length; i++) {
             if (studentprofile[i]['Student Email'] == enteredEmail) {
+              print('============================');
               print(studentprofile[i]['Student Result']);
             }
           }
@@ -166,8 +213,8 @@ StudentLogin() {
         }
       }
     } else {
+      print('============================');
       print("Incorrect email or password. Please try again.");
     }
   }
 }
-
